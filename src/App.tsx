@@ -11,12 +11,16 @@ import { Practise } from "./pages/Practise";
 import { Contact } from "./pages/Contact";
 import { Notifications } from "./pages/Notifications";
 import { SubjectDetail } from "./pages/SubjectDetail";
+import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
+import { OfflineIndicator } from "./components/OfflineIndicator";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <PWAInstallPrompt />
+      <OfflineIndicator />
       <Toaster />
       <Sonner />
       <BrowserRouter>
