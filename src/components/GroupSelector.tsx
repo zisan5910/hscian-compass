@@ -27,7 +27,7 @@ export const GroupSelector = ({ activeGroup, onGroupChange }: GroupSelectorProps
             }`}
             aria-current={activeGroup === group.id ? "page" : undefined}
           >
-            {group.emoji && <span className="text-lg">{group.emoji}</span>}
+            
             <span className="text-sm font-medium">{group.label}</span>
           </Button>
         ))}

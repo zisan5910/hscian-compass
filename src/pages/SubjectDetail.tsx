@@ -101,7 +101,8 @@ export const SubjectDetail = () => {
   }
 
   const handleCategoryClick = (categoryId: string) => {
-    const url = displaySubject.urls?.[categoryId as keyof typeof displaySubject.urls];
+    const urls = (displaySubject as any)?.urls;
+    const url = urls?.[categoryId];
     if (url) {
       // Cache the URL access for offline reference
       OfflineStorage.setItem(`last_accessed_${subjectId}_${categoryId}`, {
@@ -137,10 +138,10 @@ export const SubjectDetail = () => {
           </Button>
           <div>
             <h1 className="text-lg font-bold text-gray-900">
-              {displaySubject.mainSubject}
+              {(displaySubject as any)?.mainSubject}
             </h1>
-            {displaySubject.paper && (
-              <p className="text-sm text-gray-500">{displaySubject.paper}</p>
+            {(displaySubject as any)?.paper && (
+              <p className="text-sm text-gray-500">{(displaySubject as any)?.paper}</p>
             )}
           </div>
         </div>
@@ -151,7 +152,7 @@ export const SubjectDetail = () => {
         <div className="grid grid-cols-2 gap-4">
           {categories.map((category) => {
             const Icon = category.icon;
-            const hasUrl = displaySubject.urls?.[category.id as keyof typeof displaySubject.urls];
+            const hasUrl = (displaySubject as any)?.urls?.[category.id];
             return (
               <Card
                 key={category.id}
